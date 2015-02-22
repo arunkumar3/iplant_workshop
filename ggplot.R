@@ -37,4 +37,43 @@ d2 <- diamonds[sample(1:dim(diamonds)[1],1000),] #sampling 1000 rows from total 
 d2plot <- ggplot(data=d2,aes(x=carat,y=price,color=color))
 d2plot + geom_point(size =3)
 
+##########        STATS               ###############
 
+#import MASS library
+library(MASS)
+#creating a boxplot using geom_boxplot
+ggplot(birthwt,aes(factor(race),bwt)) +geom_boxplot()
+
+
+##########         FACETS                ###############
+#creating a facet grouping by species using facet_grid
+ggplot(data=iris,aes(x=Sepal.Length,y=Sepal.Width,color =Species)) +
+  geom_point(size =3) +
+  facet_grid(Species ~.)
+
+#creating a facet grouping by species vertically using facet_grid
+ggplot(data=iris,aes(x=Sepal.Length,y=Sepal.Width,color =Species)) +
+  geom_point(size =3) +
+  facet_grid(.~ Species)
+
+#creating a facet grouping by species using facet_wrap
+ggplot(data=iris,aes(x=Sepal.Length,y=Sepal.Width,color =Species)) +
+  geom_point(size =3) +
+  facet_wrap(~ Species)
+
+
+##########       Colors             ###################
+library("RColorBrewer")
+library("reshape2")
+
+#creating plots based on 
+df <- melt(iris,id.vars="Species") #melt is used for pivoting the rows based on the columns specified 
+ggplot (df,aes(Species,value,fill = variable)) +
+  geom_bar(stat ="identity",position = "dodge") + # dodge species is used for stacking up the bars side by side
+  scale_fill_brewer(palette = "Set1")
+
+#creating plots based on 
+df <- melt(iris,id.vars="Species") #melt is used for pivoting the rows based on the columns specified 
+ggplot (df,aes(Species,value,fill = variable)) +
+  geom_bar(stat ="identity",position = "dodge") + # dodge species is used for stacking up the bars side by side
+  scale_fill_manual(values=c("red","yellow","brown","black"))
