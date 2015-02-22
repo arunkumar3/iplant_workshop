@@ -77,3 +77,6 @@ df <- melt(iris,id.vars="Species") #melt is used for pivoting the rows based on 
 ggplot (df,aes(Species,value,fill = variable)) +
   geom_bar(stat ="identity",position = "dodge") + # dodge species is used for stacking up the bars side by side
   scale_fill_manual(values=c("red","yellow","brown","black"))
+
+
+#Im in cloud
