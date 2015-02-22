@@ -1,0 +1,48 @@
+---
+title: "Final Project"
+output: html_document
+---
+
+Read the tsv file using read delimiter function
+
+```{r}
+data.in = read.delim(file = "/home/arunkumar3/iplant_workshop/output/combined_gapMinder.tsv",sep = "\t")
+```
+
+Choose 3 countries from the dataset
+```{r}
+India_data <- subset(data.in,country== "India")  
+India_data
+Pak_data <- subset(data.in,country=="Pakistan")  
+Pak_data
+USA_data <- subset(data.in,country== "India")  
+USA_data
+```
+
+```{r,echo =FALSE}
+library("ggplot2")
+library("plyr")
+library("ggthemes")
+library("reshape2")
+```
+
+Let us see graph for India GDP across years
+```{r,echo =FALSE}
+indPlot <- ggplot(data=India_data,aes(x=year,y=gdpPercap))
+indPlot + geom_point(size=3)
+```
+
+
+Let us see graph for Pakistan GDP across years
+```{r,echo =FALSE}
+pakPlot <- ggplot(data=Pak_data,aes(x=year,y=gdpPercap))
+indPlot + geom_point(size=3)
+```
+
+
+
+Let us see graph for USA GDP across years
+```{r,echo =FALSE}
+usaPlot <- ggplot(data=USA_data,aes(x=year,y=gdpPercap))
+indPlot + geom_point(size=3)
+```
