@@ -36,13 +36,13 @@ indPlot + geom_point(size=3)
 Let us see graph for Pakistan GDP across years
 ```{r,echo =FALSE}
 pakPlot <- ggplot(data=Pak_data,aes(x=year,y=gdpPercap))
-indPlot + geom_point(size=3)
+pakPlot + geom_point(size=3)
 ```
-
 
 
 Let us see graph for USA GDP across years
 ```{r,echo =FALSE}
 usaPlot <- ggplot(data=USA_data,aes(x=year,y=gdpPercap))
-indPlot + geom_point(size=3)
+usaPlot + geom_point(size=3)
 ```
+
